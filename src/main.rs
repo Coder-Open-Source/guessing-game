@@ -14,7 +14,7 @@ fn main(){
         io::stdout().flush().expect("Erro ao limpar buffer");
         let _ = io::stdin().read_line(&mut input);
 
-        let number_user:u8 = input.trim().parse().expect("Input not an integer");
+        let number_user:u8 = input.trim().parse().expect("Input não é um numero");
 
         match number_user{
             n if n < result => {
