@@ -7,6 +7,7 @@ fn main() {
     let random_value = instance_random.get_value(); // get random value with rand lib
     let mut user_attempt = 0;
     let mut user_error = false; // user error control
+    let parse_random_value = random_value.try_into().unwrap();
 
     loop {
         let mut input = String::new(); // get user input value
@@ -28,12 +29,21 @@ fn main() {
         // check int type
         match input.trim().parse::<i32>() {
             Ok(value) => {
-                if value >= 100 {
+                  
+                if value > 100 || value < 1  {
                     user_error = true;
                     continue;
                 }
 
-                if value != random_value.try_into().unwrap() {
+                if value < parse_random_value {
+                    println!("Você digitou um número menor.");
+                    continue;
+                } else if value > parse_random_value {
+                    println!("Você digitou um número maior.");
+                    continue;
+                }
+
+                if value != parse_random_value {
                     continue;
                 }
 
